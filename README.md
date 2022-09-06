@@ -24,13 +24,9 @@
   <h3 align="center">Home Assistant Blueprints</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/PartemImperium/home-assistant-blueprints"><strong>Explore the docs »</strong></a>
+    Collection of Blueprints for Home Assistant
     <br />
     <br />
-    <a href="https://github.com/PartemImperium/home-assistant-blueprints">View Demo</a>
-    ·
     <a href="https://github.com/PartemImperium/home-assistant-blueprints/issues">Report Bug</a>
     ·
     <a href="https://github.com/PartemImperium/home-assistant-blueprints/issues">Request Feature</a>
@@ -44,17 +40,8 @@
     <ol>
         <li>
             <a href="#about-the-project">About The Project</a>
-            
         </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                
-                
-                    <li><a href="#installation">Installation</a></li>
-                
-            </ul>
-        </li>
+        <li><a href="#installation">Installation</a></li>
         <li><a href="#usage">Usage</a></li>
         <li><a href="#contributing">Contributing</a></li>
         <li><a href="#license">License</a></li>
@@ -67,65 +54,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-TODO: Add actual prject info
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+Here are the Home Assistant Blueprints that I use in my setup. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Installation
 
+Instalation is as simple as going to the "Blueprints" tab of Developer Tools in Home assistant and clicking the "Import Blueprint" button. When prompted for the url of the blueprint paste in the url of the blueprint in this repo.
 
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-
-
-
-### Installation
-
-TODO: Add actual instalation info
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/PartemImperium/home-assistant-blueprints.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+For more detailed instructions see [Home Assistants Blueprint instalation instructions](https://www.home-assistant.io/docs/automation/using_blueprints/#importing-blueprints)
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-TODO: Update to actual usage for this app.
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -154,7 +92,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* TODO: Add more Acknowledgements
+* Base for Zooz Scene Control Blueprint - https://github.com/willheineman/homeassistant/blob/main/components/automation/blueprints/zooz_zen_blueprint_template_zwave_js.yaml
 * Readme Template 
   * Actual Template - https://github.com/othneildrew/Best-README-Template
   * Tool used to apply the template - https://github.com/cookiecutter/cookiecutter

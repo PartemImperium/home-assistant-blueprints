@@ -1,0 +1,96 @@
+blueprint:
+  name: Zooz Scene Control (zwavejs)
+  description: Create automations for the scene control on Zooz switches. Used https://github.com/willheineman/homeassistant/blob/main/components/automation/blueprints/zooz_zen_blueprint_template_zwave_js.yaml as a base.
+  domain: automation
+  input:
+    zooz_switch:
+      name: Zooz Switch
+      description: List of available Zooz devices to create scenes for. Please select the Zooz Zen Switch you want to setup.
+      selector:
+        device:
+          integration: zwave_js
+          manufacturer: Zooz
+    scene_id:
+      name: Scene ID
+      description: ID of the button (scene) that will trigger the automation.
+      selector:
+        number:
+          min: 0
+          max: 15 # I guess this could technically go to 999 with the current format (3 digit number left padded with 0's) but to my knowledge 6 is the highest it actually goes with existing products. 15 (and 0) gives room for new products to have more without me having to change the max.
+          step: 1
+    key_1x:
+      name: Key Press (1x)
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_2x:
+      name: Key Press (2x)
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_3x:
+      name: Key Press (3x)
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_4x:
+      name: Key Press (4x)
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_5x:
+      name: Key Press (5x)
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_held:
+      name: Key Held
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+    key_released:
+      name: Key Release On
+      description: Action to run on button press.
+      default: []
+      selector:
+        action: {}
+mode: single
+max_exceeded: silent
+variables:
+  device_id: !input 'zooz_switch'
+trigger:
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    command_class_name: Central Scene
+    device_id: !input 'zooz_switch'
+action:
+- variables:
+    scene_id: '{{ trigger.event.data.label }}'
+    scene_value: '{{ trigger.event.data.value }}'
+    input_scene_id: !input 'scene_id'
+    input_scene_id_formatted: '{{ "Scene " + ("%03d" % input_scene_id) }}'
+- choose:
+  - conditions: '{{ scene_id == input_scene_id_formatted }}'
+    sequence:
+    - choose:
+      - conditions: '{{ scene_value == ''KeyHeldDown'' }}'
+        sequence: !input 'key_held'
+      - conditions: '{{ scene_value == ''KeyPressed'' }}'
+        sequence: !input 'key_1x'
+      - conditions: '{{ scene_value == ''KeyPressed2x'' }}'
+        sequence: !input 'key_2x'
+      - conditions: '{{ scene_value == ''KeyPressed3x'' }}'
+        sequence: !input 'key_3x'
+      - conditions: '{{ scene_value == ''KeyPressed4x'' }}'
+        sequence: !input 'key_4x'
+      - conditions: '{{ scene_value == ''KeyPressed5x'' }}'
+        sequence: !input 'key_5x'
+      - conditions: '{{ scene_value == ''KeyReleased'' }}'
+        sequence: !input 'key_released'
